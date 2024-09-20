@@ -1,9 +1,14 @@
 package com.makaia.selenium.api.base;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 
 import static com.makaia.general.utils.PropertiesHandler.config;
@@ -129,8 +134,16 @@ public class SeleniumBase extends Reporter implements Browser, Element {
 
 	@Override
 	public long takeSnap() {
-		// TODO Auto-generated method stub
-		return 0;
+		long number = (long) Math.floor(Math.random() * 900000000L) + 10000000L;
+		try {
+			FileUtils.copyFile(getDriver().getScreenshotAs(OutputType.FILE),
+					new File("./"+Reporter.folderName+"/images/" + number + ".jpg"));
+		} catch (WebDriverException e) {
+			reportStep("The browser has been closed." + e.getMessage(), "fail");
+		} catch (IOException e) {
+			reportStep("The snapshot could not be taken " + e.getMessage(), "warning");
+		}
+		return number;
 	}
 
 }
