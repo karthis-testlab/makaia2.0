@@ -31,6 +31,8 @@ public class DriverInstance {
 			if (headless) {
 				options.addArguments("--headless=new");
 			}
+			options.addArguments("--disable-search-engine-choice-screen");
+			options.addArguments("--start-maximized");
 			options.addArguments("--disable-notifications");
 			options.addArguments("--incognito");
 			remoteWebdriver.set(new ChromeDriver(options));

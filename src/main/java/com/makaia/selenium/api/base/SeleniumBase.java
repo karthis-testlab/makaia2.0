@@ -6,10 +6,12 @@ import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 import static com.makaia.general.utils.PropertiesHandler.config;
 import com.makaia.general.utils.Reporter;
@@ -33,20 +35,38 @@ public class SeleniumBase extends Reporter implements Browser, Element {
 	public void type(WebElement ele, String data) {
 		ele.sendKeys(data);
 	}
+	
+	@Override
+	public void typeAndEnter(WebElement ele, String data) {
+		ele.sendKeys(data, Keys.ENTER);
+	}
 
 	@Override
 	public String getElementText(WebElement ele) {
 		return ele.getText();
 	}
+	
+	@Override
+	public String getAttributeValue(WebElement ele, String value) {
+		return ele.getAttribute(value);
+	}
+	
+	@Override
+	public void dropdownSelectByValue(WebElement ele, String value) {
+		Select select = new Select(ele);
+		select.selectByValue(value);
+	}
 
 	@Override
 	public void browserLaunch() {
 		setDriver(config("makaia.browser.name"), Boolean.parseBoolean(config("makaia.browser.isheadless")));
+		setWait();
 	}
 
 	@Override
 	public void browserLaunch(String browserName) {
 		setDriver(browserName, false);
+		setWait();
 	}
 
 	@Override
@@ -137,7 +157,7 @@ public class SeleniumBase extends Reporter implements Browser, Element {
 		long number = (long) Math.floor(Math.random() * 900000000L) + 10000000L;
 		try {
 			FileUtils.copyFile(getDriver().getScreenshotAs(OutputType.FILE),
-					new File("./"+Reporter.folderName+"/images/" + number + ".jpg"));
+					new File("./" + Reporter.folderName + "/images/" + number + ".jpg"));
 		} catch (WebDriverException e) {
 			reportStep("The browser has been closed." + e.getMessage(), "fail");
 		} catch (IOException e) {

@@ -9,6 +9,7 @@
 		<apache.poi.version>5.2.4</apache.poi.version>
 		<apache.poi.ooxml.version>5.2.4</apache.poi.ooxml.version>
 		<extent.report.version>5.1.2</extent.report.version>
+		<rest.assured.version>5.5.0</rest.assured.version>
 	</properties>
 	<dependencies>		
 		<dependency>
@@ -35,6 +36,11 @@
 			<groupId>com.aventstack</groupId>
 			<artifactId>extentreports</artifactId>
 			<version>${extent.report.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<version>${rest.assured.version}</version>
 		</dependency>
 	</dependencies>
 </project>

@@ -10,7 +10,13 @@ public interface Element {
 	
 	public void type(WebElement ele, String data);
 	
+	public void typeAndEnter(WebElement ele, String data);	
+	
+	public void dropdownSelectByValue(WebElement ele, String value);
+	
 	public String getElementText(WebElement ele);
+	
+	public String getAttributeValue(WebElement ele, String value);
 	
 
 }
