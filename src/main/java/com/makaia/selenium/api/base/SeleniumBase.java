@@ -74,11 +74,11 @@ public class SeleniumBase extends Reporter implements Browser, Element {
 				break;
 			}
 		} catch (NoSuchElementException e) {
-			//reportStep("The Element with locator:" + locatorType + " Not Found with value: " + value + "\n"
-			//		+ e.getMessage(), "fail");
+			reportStep("The Element with locator:" + locatorType + " Not Found with value: " + value + "\n"
+					+ e.getMessage(), "fail");
 		} catch (Exception e) {
-			//reportStep("The Element with locator:" + locatorType + " Not Found with value: " + value + "\n"
-			//		+ e.getMessage(), "fail");
+			reportStep("The Element with locator:" + locatorType + " Not Found with value: " + value + "\n"
+					+ e.getMessage(), "fail");
 		}
 		return null;
 	}
@@ -108,11 +108,11 @@ public class SeleniumBase extends Reporter implements Browser, Element {
 				break;
 			}
 		} catch (NoSuchElementException e) {
-			//reportStep("The Element with locator:" + locatorType + " Not Found with value: " + value + "\n"
-			//		+ e.getMessage(), "fail");
+			reportStep("The Element with locator:" + locatorType + " Not Found with value: " + value + "\n"
+					+ e.getMessage(), "fail");
 		} catch (Exception e) {
-			//reportStep("The Element with locator:" + locatorType + " Not Found with value: " + value + "\n"
-			//		+ e.getMessage(), "fail");
+			reportStep("The Element with locator:" + locatorType + " Not Found with value: " + value + "\n"
+					+ e.getMessage(), "fail");
 		}
 		return null;
 	}
@@ -125,6 +125,12 @@ public class SeleniumBase extends Reporter implements Browser, Element {
 	@Override
 	public void quit() {
 		getDriver().quit();
+	}
+
+	@Override
+	public long takeSnap() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

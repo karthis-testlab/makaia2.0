@@ -19,7 +19,7 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 import com.makaia.selenium.api.base.DriverInstance;
 
 public abstract class Reporter extends DriverInstance {
-	
+
 	private static ExtentReports extent;
 	private static final ThreadLocal<ExtentTest> parentTest = new ThreadLocal<ExtentTest>(); // testSutie
 	private static final ThreadLocal<ExtentTest> test = new ThreadLocal<ExtentTest>();// testCase
@@ -67,7 +67,6 @@ public abstract class Reporter extends DriverInstance {
 
 	public void reportStep(String desc, String status, boolean bSnap) {
 		synchronized (test) {
-
 			// Start reporting the step and snapshot
 			Media img = null;
 			if (bSnap && !(status.equalsIgnoreCase("INFO") || status.equalsIgnoreCase("skipped"))) {
