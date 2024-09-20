@@ -13,9 +13,9 @@ public interface Browser {
 	
 	public void loadUrl(String url);
 	
-	public WebElement locateElement(Locators locatorType);
+	public WebElement locateElement(Locators locatorType, String value);
 	
-	public List<WebElement> locateElements(Locators locatorType);
+	public List<WebElement> locateElements(Locators locatorType, String value);
 	
 	public void close();
 	
