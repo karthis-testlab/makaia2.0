@@ -23,5 +23,20 @@ public class PropertiesHandler {
 		}
 		return value;
 	}
+	
+	public static String secret(String key) {
+		properties = new Properties();
+		String value = null;
+		try {
+			properties.load(new FileInputStream(new File("src/test/resources/Secret.properties")));
+			value = properties.getProperty(key);
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException(
+					"Unable to found \"src/test/resources/secret.properties\" file in the mentioned location.");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return value;
+	}
 
 }

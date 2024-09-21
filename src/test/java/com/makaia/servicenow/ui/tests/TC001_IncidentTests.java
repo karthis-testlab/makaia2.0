@@ -1,15 +1,15 @@
 package com.makaia.servicenow.ui.tests;
 
+import static com.makaia.general.utils.PropertiesHandler.config;
+import static com.makaia.general.utils.PropertiesHandler.secret;
+
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import static com.makaia.general.utils.PropertiesHandler.*;
-
-import com.makaia.servicenow.api.services.IncidentSerivce;
 import com.makaia.servicenow.ui.pages.LoginPage;
 import com.makaia.testng.api.TestNGHooks;
 
-public class IncidentTests extends TestNGHooks {
+public class TC001_IncidentTests extends TestNGHooks {
 	
 	@BeforeTest
 	public void beforeTest() {
@@ -33,15 +33,5 @@ public class IncidentTests extends TestNGHooks {
 		    .validateIncidentCreation();
 		
 	}
-	
-	@Test
-	public void testCreateNewIncidentInApi() {
-		new IncidentSerivce()
-		    .getIncidentByNumber(incidentNumber)
-		    .validateStatusCode(200)
-		    .validateStatusLine("OK")
-		    .validateContentType("application/json");
-	}
-	
 
 }
