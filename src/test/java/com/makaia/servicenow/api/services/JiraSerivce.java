@@ -4,6 +4,8 @@ import java.io.File;
 
 import org.hamcrest.Matchers;
 
+import com.makaia.general.utils.PropertiesHandler;
+
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 
@@ -29,7 +31,7 @@ public class JiraSerivce {
 		issueId = RestAssured.given()
 		           .auth()
 		           .preemptive()
-		           .basic("karthike.selene@gmail.com", "ATATT3xFfGF0eenMiSNCmo6rgh24ht-bMCqJ_0rp6dqv-G0vmpllmyFc05PQZDnDJ0MwkNW4UA7tmcRjO9DaKjoKCilZfh2-AHlyCg9-HJr5N8a9il08xkl1uKit4kAkU1lWMhxjRaoUZ7d_ejigUcvqtELDWL7CehN4mbfJT7tQ1CtLSRMNwYQ=EE0D6494")
+		           .basic(PropertiesHandler.config("makaia.servicenow.username"), PropertiesHandler.secret("jira.api.token"))
 	               .header("Content-Type", "application/json")
 	               .when()
 	               .body(payload)
@@ -48,7 +50,7 @@ public class JiraSerivce {
 		RestAssured.given()
 		           .auth()
 		           .preemptive()
-		           .basic("karthike.selene@gmail.com", "ATATT3xFfGF0eenMiSNCmo6rgh24ht-bMCqJ_0rp6dqv-G0vmpllmyFc05PQZDnDJ0MwkNW4UA7tmcRjO9DaKjoKCilZfh2-AHlyCg9-HJr5N8a9il08xkl1uKit4kAkU1lWMhxjRaoUZ7d_ejigUcvqtELDWL7CehN4mbfJT7tQ1CtLSRMNwYQ=EE0D6494")
+		           .basic(PropertiesHandler.config("makaia.servicenow.username"), PropertiesHandler.secret("jira.api.token"))
 		           .header("X-Atlassian-Token", "no-check")
 		           .pathParam("issueIdOrKey", issueId)
 		           .log()
